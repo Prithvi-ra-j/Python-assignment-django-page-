@@ -11,7 +11,7 @@ def upload_file(request):
         if form.is_valid():
             file = request.FILES['file']
             try:
-                # Read the uploaded file into a DataFrame
+               
                 if file.name.endswith('.csv'):
                     df = pd.read_csv(file)
                 elif file.name.endswith('.xlsx'):
