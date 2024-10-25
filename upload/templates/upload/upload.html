@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Dark File Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212; 
+            color: #e0e0e0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #1e1e1e; 
+            border-bottom: 2px solid #bb86fc; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            color: #bb86fc; 
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 30px;
+            background: #1f1f1f; 
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #bb86fc; 
+            border-radius: 8px;
+            background: #2c2c2c; 
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input[type="file"]:hover {
+            border-color: #3700b3; 
+        }
+        button {
+            background: linear-gradient(135deg, #6200ea, #bb86fc); 
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        button:hover {
+            background: linear-gradient(135deg, #bb86fc, #6200ea);
+            transform: scale(1.05);
+        }
+        h2 {
+            color: #bb86fc; 
+            margin-top: 20px;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        .error {
+            color: #f44336; 
+            background: rgba(244, 67, 54, 0.1);
+            border: 2px solid rgba(244, 67, 54, 0.5);
+        }
+        .success {
+            color: #4caf50; /* Green for success */
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid rgba(76, 175, 80, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Upload Your Excel/CSV File</h1>
+    </header>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" required>  
+            <button type="submit"><i class="fas fa-upload"></i> Upload</button>
+        </form>
+
+        {% if summary %}
+            <h2>Data Summary:</h2>
+            <pre>{{ summary }}</pre>
+        {% endif %}
+
+        {% if success %}
+            <div class="message success">{{ success }}</div>
+        {% endif %}
+
+        {% if error %}
+            <div class="message error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
