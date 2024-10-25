@@ -21,6 +21,7 @@ def upload_file(request):
 
                 github_link = "https://github.com/Prithvi-ra-j/Python-assignment-django-page-"
                 summary = df.describe().to_string()
+                website="https://python-assignment-django-page.onrender.com/"
                 message = f"{summary}\n\nGitHub Repository: {github_link}"
                 
                 send_mail(
