@@ -27,7 +27,7 @@ def upload_file(request):
                     subject=f'Python Assignment - Prithviraj',
                     message=message,
                     from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=['uzumakilelouch43@gmail.com'],
+                    recipient_list=['tech@themedius.ai'],
                 )
 
                 return render(request, 'upload/upload.html', {'form': form, 'summary': summary, 'success': 'Email sent successfully!'})
