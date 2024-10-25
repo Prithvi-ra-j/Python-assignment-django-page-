@@ -11,7 +11,7 @@ def upload_file(request):
         if form.is_valid():
             file = request.FILES['file']
             try:
-                # Read the uploaded file into a DataFrame
+               
                 if file.name.endswith('.csv'):
                     df = pd.read_csv(file)
                 elif file.name.endswith('.xlsx'):
@@ -27,7 +27,7 @@ def upload_file(request):
                     subject=f'Python Assignment - Prithviraj',
                     message=message,
                     from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=['uzumakilelouch43@gmail.com'],
+                    recipient_list=['tech@themedius.ai'],
                 )
 
                 return render(request, 'upload/upload.html', {'form': form, 'summary': summary, 'success': 'Email sent successfully!'})
